@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>css3过渡</title>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+	<style>
+		.demo {
+			width: 360px;
+			margin: 60px auto 10px auto
+		}
+
+		@media only screen and (min-width: 420px) {
+			.demo {
+				width: 800px;
+				margin: 60px auto 10px auto
+			}
+		}
+
+		.box {
+			float: left;
+			width: 380px;
+			height: 260px
+		}
+
+		.clear {
+			clear: both
+		}
+
+		.he_border1 {
+			padding: 0;
+			margin: 0;
+			overflow: hidden;
+			width: 360px;
+			height: 240px;
+			position: relative;
+			background: #dd5a3d;
+			border: rgb(0, 0, 0) 2px solid;
+			box-sizing: border-box;
+			transition-property: all;
+			transition-duration: 0.5s;
+			transition-timing-function: ease-in-out;
+		}
+
+		.he_border1 .he_border1_caption {
+			color: rgb(253, 253, 253);
+			transition-property: all;
+			transition-duration: 0.5s;
+			transition-timing-function: ease-in-out;
+			overflow: hidden;
+		}
+
+		.he_border1:hover .he_border1_img {
+			position: absolute;
+			transform: scale(1.2);
+			opacity: 0.5;
+		}
+
+		.he_border1 .he_border1_img {
+			display: block;
+			width: 100%;
+			position: relative;
+			transition: all 0.5s ease-in-out;
+			opacity: 1;
+			overflow: hidden;
+		}
+
+		.he_border1 .he_border1_caption::before {
+			top: 18px;
+			right: 36px;
+			bottom: 19px;
+			left: 36px;
+			border-top: 1px solid rgb(253, 253, 253);
+			border-bottom: 1px solid rgb(253, 253, 253);
+			transform: scale(0, 1);
+			transform-origin: 0 0;
+		}
+
+		.he_border1 .he_border1_caption::after {
+			top: 18px;
+			right: 36px;
+			bottom: 19px;
+			left: 36px;
+			border-right: 1px solid rgb(253, 253, 253);
+			border-left: 1px solid rgb(253, 253, 253);
+			transform: scale(1, 0);
+			transform-origin: 100% 0;
+		}
+
+		.he_border1 .he_border1_caption::before,
+		.he_border1 .he_border1_caption::after {
+			position: absolute;
+			transition-duration: 0.5s;
+		}
+
+		.he_border1:hover .he_border1_caption::before,
+		.he_border1:hover .he_border1_caption::after {
+			opacity: 1;
+			transform: scale(1);
+		}
+
+		.he_border1 .he_border1_caption_h {
+			position: absolute;
+			overflow: hidden;
+			font-size: 21px;
+			text-align: center;
+			font-weight: 600;
+			width: 285px;
+			top: 47px;
+			left: 36px;
+			transition: all 0.5s ease-in-out;
+			opacity: 1;
+		}
+
+		.he_border1 .he_border1_caption_p {
+			position: absolute;
+			font-size: 15px;
+			text-align: center;
+			overflow: hidden;
+			opacity: 0;
+			width: 285px;
+			top: 47px;
+			left: 36px;
+			transition-property: all;
+			transition-duration: 0.5s;
+			transition-timing-function: ease-in-out;
+		}
+
+		.he_border1 .he_border1_caption,
+		.he_border1 .he_border1_caption>a {
+			position: absolute;
+			overflow: hidden;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			transition: all 0.5s ease-in-out;
+			z-index: 2000;
+		}
+
+		.he_border1:hover .he_border1_caption_p {
+			opacity: 1;
+			top: 106px;
+		}
+
+		.he_border2 {
+			padding: 0;
+			margin: 0;
+			position: relative;
+			overflow: hidden;
+			background: #fe7253;
+			width: 360px;
+			height: 240px;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			transition-property: all;
+			transition-duration: 0.5s;
+			transition-timing-function: ease-in-out;
+		}
+
+		.he_border2 .he_border2_img {
+			overflow: hidden;
+			padding: 0;
+			margin: 0;
+			position: relative;
+			display: block;
+			width: 356px;
+			transition: all 0.5s ease-in-out;
+			opacity: 1;
+		}
+
+		.he_border2 .he_border2_caption {
+			overflow: hidden;
+			padding: 0;
+			margin: 0;
+			color: white;
+			backface-visibility: hidden;
+			transition: all 0.4s ease-in-out;
+
+		}
+		.he_border2:hover .he_border2_img {
+			opacity: 0.5;
+			transform: scale(1.2);
+			position: absolute;
+		}
+
+		.he_border2 .he_border2_caption::before {
+			top: 45px;
+			bottom: 45px;
+			left: 19px;
+			right: 19px;
+			border-top: 1px solid white;
+			border-bottom: 1px solid white;
+			transform-origin: 0 0;
+			transform: scale(0, 1);
+		}
+
+		.he_border2 .he_border2_caption::before,
+		.he_border2 .he_border2_caption::after {
+			position: absolute;
+			transition-duration: 0.5s;
+		}
+
+		.he_border2 .he_border2_caption::after {
+			top: 30px;
+			right: 40pxpx;
+			bottom: 30px;
+			left: 40px;
+			border-left: 1px solid white;
+			border-right: 1px solid white;
+			transform-origin: 100% 0;
+			transform: scale(1, 0);
+
+		}
+
+		.he_border2 .he_border2_caption_h {
+			position: absolute;
+			overflow: hidden;
+			font-size: 21px;
+			text-align: center;
+			font-weight: 600;
+			width: 285px;
+			top: 47px;
+			left: 36px;
+			transition: all 0.5s ease-in-out;
+			opacity: 1;
+		}
+
+		.he_border2:hover .he_border2_caption::before,
+		.he_border2:hover .he_border2_caption::after {
+			transform: scale(1);
+			opacity: 1;
+		}
+
+		.he_border2 .he_border2_caption_p {
+			position: absolute;
+			font-size: 15px;
+			text-align: center;
+			overflow: hidden;
+			opacity: 0;
+			width: 285px;
+			top: 47px;
+			left: 36px;
+			transition-property: all;
+			transition-duration: 0.5s;
+			transition-timing-function: ease-in-out;
+		}
+
+		.he_border2 .he_border2_caption,
+		.he_border2 .he_border2_caption>a {
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			transition: all 0.5s ease-in-out;
+			z-index: 2000
+		}
+
+		.he_border2:hover .he_border2_caption_p {
+			opacity: 1;
+			top: 106px;
+		}
+
+		.he_3DFlipX {
+			position: relative;
+			overflow: hidden;
+			border: 0;
+			display: block;
+			height: 240px;
+			width: 360px;
+			box-sizing: border-box;
+		}
+
+		.he_3DFlipX_inner {
+			position: relative;
+			padding: 0;
+			margin: 0;
+			width: 360px;
+			height: 240px;
+		}
+
+		.he_3DFlipX_inner:hover>div.he_3DFlipX_img {
+			transform: rotateX(180deg);
+		}
+
+		.he_3DFlipX_inner div.he_3DFlipX_img {
+			transition-property: all;
+			transition-duration: 0.5s;
+			transition-timing-function: ease-in-out;
+			backface-visibility: hidden;
+		}
+
+		.he_3DFlipX_inner>div img {
+			display: block;
+			position: relative;
+			padding: 0;
+			margin: 0;
+			width: 360px;
+			height: 240px;
+		}
+
+		.he_3DFlipX_inner:hover .he_3DFlipX_caption {
+			opacity: 1;
+			transform: rotateX(0)
+		}
+
+		.he_3DFlipX_caption {
+			margin: 0;
+			position: absolute;
+			padding: 0;
+			width: 360px;
+			height: 240px;
+			background: #e96446;
+			color: white;
+			transform: rotateX(-180deg);
+			text-align: center;
+			backface-visibility: hidden;
+			transition-property: all;
+			transition-duration: 0.5s;
+			transition-timing-function: ease-in-out;
+			opacity: 0;
+		}
+
+		.he_3DFlipX_caption p {
+			position: absolute;
+			font-size: 15px;
+			top: 120px;
+			left: 8px;
+			text-align: center;
+			color: white;
+		}
+
+		.he_3DFlipX a {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 360px;
+			height: 240px;
+		}
+
+		.he_3DFlipX_caption h3 {
+			position: absolute;
+			margin: 0;
+			padding: 0;
+			width: 360px;
+			top: 60px;
+			left: 8px;
+			color: white;
+			text-align: center;
+			font-size: 22px;
+			font-weight: 600;
+		}
+
+		.he_3DFlipY {
+			position: relative;
+			overflow: hidden;
+			border: 0;
+			display: block;
+			height: 240px;
+			width: 360px;
+			box-sizing: border-box;
+		}
+
+		.he_3DFlipY_inner {
+			position: relative;
+			padding: 0;
+			margin: 0;
+			width: 360px;
+			height: 240px;
+		}
+
+		.he_3DFlipY_inner:hover>div.he_3DFlipY_img {
+			transform: rotateY(180deg);
+		}
+
+		.he_3DFlipY_inner>div.he_3DFlipY_img {
+			transition-property: all;
+			transition-duration: 0.5s;
+			transition-timing-function: ease-in-out;
+			backface-visibility: hidden;
+		}
+
+		.he_3DFlipY_caption {
+			margin: 0;
+			position: absolute;
+			padding: 0;
+			width: 360px;
+			height: 240px;
+			background: #e96446;
+			color: white;
+			transform: rotateY(-180deg);
+			text-align: center;
+			backface-visibility: hidden;
+			transition-property: all;
+			transition-duration: 0.5s;
+			transition-timing-function: ease-in-out;
+			opacity: 0;
+		}
+
+		.he_3DFlipY_inner:hover .he_3DFlipY_caption {
+			transform: rotateY(0);
+			opacity: 1;
+		}
+
+		.he_3DFlipY_caption h3 {
+			position: absolute;
+			margin: 0;
+			padding: 0;
+			width: 360px;
+			top: 60px;
+			left: 8px;
+			color: white;
+			text-align: center;
+			font-size: 22px;
+			font-weight: 600;
+		}
+
+		.he_3DFlipY_inner>div img {
+			display: block;
+			position: relative;
+			padding: 0;
+			margin: 0;
+			width: 360px;
+			height: 240px;
+		}
+
+		.he_3DFlipY a {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 360px;
+			height: 240px;
+		}
+
+		.he_3DFlipY_caption p {
+			position: absolute;
+			font-size: 15px;
+			top: 120px;
+			left: 8px;
+			text-align: center;
+			color: white;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div class="demo">
+
+		<div class="box">
+			<div class="he_border1">
+				<img class="he_border1_img" src="images/pro_1.jpg" alt="Image 01">
+				<div class="he_border1_caption">
+					<h3 class="he_border1_caption_h">过渡</h3>
+					<p class="he_border1_caption_p">过渡效果+演示+源码</p>
+					<a class="he_border1_caption_a" href="#"></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="box">
+			<div class="he_border2">
+				<img class="he_border2_img" src="images/pro_2.jpg" alt="Image 01">
+				<div class="he_border2_caption">
+					<h3 class="he_border2_caption_h">过渡</h3>
+					<p class="he_border2_caption_p">过渡效果+演示+源码</p>
+					<a class="he_border2_caption_a" href="#"></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="box">
+			<div class="he_3DFlipX">
+				<div class="he_3DFlipX_inner">
+					<div class="he_3DFlipX_img">
+						<img src="images/pro_3.jpg" alt="img01">
+					</div>
+					<div class="he_3DFlipX_caption">
+						<h3>过渡</h3>
+						<p>过渡效果+演示+源码</p>
+					</div>
+					<a href="#"></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="box">
+			<div class="he_3DFlipY">
+				<div class="he_3DFlipY_inner">
+					<div class="he_3DFlipY_img">
+						<img src="images/pro_1.jpg" alt="img01">
+					</div>
+					<div class="he_3DFlipY_caption">
+						<h3>过渡</h3>
+						<p>过渡效果+演示+源码</p>
+					</div>
+					<a href="#"></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+
+</body>
+
+</html>
